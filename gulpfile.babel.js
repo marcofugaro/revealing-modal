@@ -16,7 +16,7 @@ export default {
         dest: buildDir + 'css',
     },
 
-    browserify: {
+    scripts: {
         src: sourceDir + 'js/revealing-modal.js',
         dest: buildDir + 'js',
         bundleName: 'revealing-modal.js',
