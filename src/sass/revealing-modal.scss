@@ -1,0 +1,33 @@
+.revealing-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transition: all 0.8s ease;
+
+  &__content {
+    position: absolute;
+    background-color: rgba(red, 0.2);
+    width: 100vw;
+    top: -50vh;
+    left: -50vw;
+    transition: all 0.8s ease;
+  }
+
+  &.open {
+    pointer-events: auto;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    .revealing-modal__content {
+      top: 0;
+      left: 0;
+    }
+  }
+}

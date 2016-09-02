@@ -5,7 +5,7 @@ Modal window plugin inspired by the Marshmallow opening app animation
 
 ## Usage
 
-Put the content of the modal in an elemen with the class `revealing-modal` and the id equal to the caller
+Put the content of the modal in an element with the class `revealing-modal` and the id equal to the caller
 ```html
 <a href="#my-cusom-modal" data-toggle="revealing-modal"></a>
 <div class="revealing-modal" id="my-cusom-modal">
@@ -31,7 +31,7 @@ myCustomModal.destroy();
 ```js
 {
     slideUpAnimation: true,
-    fullscreen: false,
+    fullscreen: false, //??
     shadow: false,
 }
 
@@ -39,6 +39,6 @@ myCustomModal.destroy();
 
 
 ## Events
-`open.revealingModal, openTransitionEnd.revealingModal`
+`open.revealingModal, opened.revealingModal, close.revealingModal, closed.revealingModal`
 
 ## Methods
