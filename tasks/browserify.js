@@ -11,7 +11,7 @@ import rename from 'gulp-rename';
 import config from './../gulpfile.babel';
 
 
-gulp.task('browserify', ['eslint'], function() {
+gulp.task('browserify', function() {
 
   let b = browserify({
     entries: [config.scripts.src],
@@ -27,7 +27,7 @@ gulp.task('browserify', ['eslint'], function() {
 
 
   const transforms = [
-    { name: babelify, options: { presets: ['es2015', 'stage-1'] } }
+    { name: babelify, options: { presets: ['latest', 'stage-2'] } }
   ];
 
   transforms.forEach(function(transform) {
