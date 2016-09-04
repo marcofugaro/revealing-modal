@@ -19,19 +19,34 @@ const RevealingModal = ((window, document, $) => {
     </div>
   `;
 
-  const templates = {
-    modalContent: (html) => `<div class="revealing-modal__content">${html}</div>`,
-    modalClose: () => `<div class="revealing-modal__close">X</div>`,
-  };
-
   const defaults = {
     slideUpAnimation: true,
     shadow: false,
     fullscreen: false,
   };
 
+  let config = {};
 
-  function init({ ...defaults }) {
+  const errors = {
+    /**
+     * Check if a link is an anchor, if it is returns the link without the #
+     * 
+     * @param  {string}  link - the link to check
+     * @return {Boolean/string} returns false if it's not an anchror, the link without the # if instead it is
+     */
+    isAnchor(link) {
+      if (link.charAt(0) !== '#') {
+        throw new Error('The href attribute must be an anchor');
+        return false;
+      }
+
+      return link.slice(1);
+    },
+  };
+
+  function init(options = {}) {
+    config = { ...defaults, ...options };
+
     modals = [...document.querySelectorAll('.revealing-modal')];
     modals = _buildModal(modals);
     triggers = [...document.querySelectorAll('[data-toggle="revealing-modal"]')];
@@ -39,8 +54,16 @@ const RevealingModal = ((window, document, $) => {
   }
 
   function openModal(e) {
-    // const target = e.currentTarget
-    // if has attribute data-target get this, else get the href
+    let targetId = '';
+    if (e.currentTarget.hasAttribute('data-target')) {
+      targetId = e.currentTarget.getAttribute('data-target');
+    } else {
+      targetId = _errors.isAnchor(e.currentTarget.getAttribute('href'))
+      if(!targetId)
+        return;
+    }
+
+    document.getElementById(targetId).classList.add('open');
   }
   function closeModal() {}
 
@@ -70,7 +93,7 @@ const RevealingModal = ((window, document, $) => {
 
   function _triggerEvent(event, modal) {
 
-  },
+  }
 
 
   return {
@@ -80,3 +103,9 @@ const RevealingModal = ((window, document, $) => {
   };
 
 })(window, window.document, window.jQuery);
+
+RevealingModal.init({
+    slideUpAnimation: true,
+    // shadow: true,
+    fullscreen: true,
+  });
