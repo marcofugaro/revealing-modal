@@ -6,14 +6,13 @@ const banner = `${package.name} ${package.version} - ${package.description}\nCop
 
 
 module.exports = {
-    // context: __dirname + '/src',
     entry: [
-        __dirname + `/src/js/${package.name}.js`,
-        __dirname + `/src/sass/${package.name}.scss`
+        `./src/js/${package.name}.js`,
+        `./src/sass/${package.name}.scss`,
     ],
     output: {
         path: __dirname + '/dist',
-        filename: '[name].min.js'
+        filename: `${package.name}.min.js`
         // library: `inView`,
         // libraryTarget: 'umd'
     },
@@ -31,6 +30,6 @@ module.exports = {
     },
     plugins: [
         new webpack.BannerPlugin(banner),
-        new ExtractTextPlugin('[name].min.css')
+        new ExtractTextPlugin(`${package.name}.min.css`)
     ]
 };
