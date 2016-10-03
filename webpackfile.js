@@ -4,7 +4,10 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const autoprefixer = require('autoprefixer');
 const package = require('./package');
 
-const banner = `${package.name} ${package.version} - ${package.description}\nCopyright (c) ${ new Date().getFullYear() } ${package.author} - ${package.homepage}\nLicense: ${package.license}`;
+const banner = `${package.name} v${package.version} - ${package.description}
+${package.homepage}
+Copyright © ${ new Date().getFullYear() } ${package.author}
+License: ${package.license}`;
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
