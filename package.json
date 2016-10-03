@@ -8,9 +8,10 @@
     "url": "https://github.com/marcofugaro/revealing-modal"
   },
   "scripts": {
-    "start": "NODE_ENV=production webpack -wp",
+    "start": "webpack -w",
     "build": "NODE_ENV=production webpack -p",
-    "lint": "eslint src/js/**/*.js"
+    "lint": "eslint src/js/**/*.js",
+    "clean": "rm -rf dist/"
   },
   "keywords": [
     "modal",
@@ -22,37 +23,19 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.5.0",
-    "babel-core": "^6.14.0",
+    "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-latest": "^6.14.0",
     "babel-preset-stage-2": "^6.17.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.0.1",
     "css-loader": "^0.25.0",
-    "del": "^2.2.1",
     "eslint-config-airbnb-base": "^5.0.2",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-import": "^1.13.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-eslint": "^3.0.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-uglify": "^1.5.4",
+    "node-sass": "^3.10.1",
     "postcss-loader": "^0.13.0",
-    "require-dir": "^0.3.0",
-    "run-sequence": "^1.2.1",
     "sass-loader": "^4.0.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0",
     "webpack": "^2.1.0-beta.25",
     "webpack-notifier": "^1.4.1"
-  },
-  "dependencies": {
-    "babel-preset-latest": "^6.14.0",
-    "babel-preset-stage-2": "^6.13.0"
   }
 }
