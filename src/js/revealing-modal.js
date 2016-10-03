@@ -1,9 +1,4 @@
-/*!
- * Revealing Modal
- * http://***.github.com/
- *
- * @author Marco Fugaro - http://marcofugaro.it/
- */
+console.log(process.env.NODE_ENV);
 
 // obviously with that name we need a REVEALING Module Pattern
 const RevealingModal = ((window, document, $) => {
@@ -30,7 +25,7 @@ const RevealingModal = ((window, document, $) => {
   const errors = {
     /**
      * Check if a link is an anchor, if it is returns the link without the #
-     * 
+     *
      * @param  {string}  link - the link to check
      * @return {Boolean/string} returns false if it's not an anchror, the link without the # if instead it is
      */
