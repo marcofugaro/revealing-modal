@@ -1,5 +1,3 @@
-console.log(process.env.NODE_ENV);
-
 // obviously with that name we need a REVEALING Module Pattern
 const RevealingModal = ((window, document, $) => {
 

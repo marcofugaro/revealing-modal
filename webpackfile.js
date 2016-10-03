@@ -6,6 +6,8 @@ const package = require('./package');
 
 const banner = `${package.name} ${package.version} - ${package.description}\nCopyright (c) ${ new Date().getFullYear() } ${package.author} - ${package.homepage}\nLicense: ${package.license}`;
 
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
 module.exports = {
     context: __dirname,
     entry: [
