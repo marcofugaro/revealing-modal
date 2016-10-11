@@ -12,7 +12,6 @@ License: ${package.license}`;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    context: __dirname,
     entry: [
         `./src/js/${package.name}.js`,
         `./src/sass/${package.name}.scss`,
