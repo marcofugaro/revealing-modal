@@ -15,7 +15,7 @@ Put the content of the modal in an element with the class `revealing-modal` and 
 
 
 ```html
-<button data-toggle="revealing-modal" data-target="my-cusom-modal"></button>
+<button data-toggle="revealing-modal" data-target="#my-cusom-modal"></button>
 ```
 
 

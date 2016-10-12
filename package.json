@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Modal window plugin inspired by the Marshmallow opening app animation",
   "author": "Marco Fugaro <marco.fugaro@gmail.com> (http://marcofugaro.it/)",
+  "homepage": "https://marcofugaro.github.io/revealing-modal",
   "repository": {
     "type": "git",
     "url": "https://github.com/marcofugaro/revealing-modal"
