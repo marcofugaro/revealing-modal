@@ -1,3 +1,9 @@
+import modalTemplate from './template';
+import ERRORS from './errors';
+
+// TODO reinit the module if something is loaded asyncronously
+
+
 // obviously with that name we need a REVEALING Module Pattern
 const RevealingModal = ((window, document, $) => {
 
@@ -5,12 +11,6 @@ const RevealingModal = ((window, document, $) => {
   let modals = [];
   let triggers = [];
 
-  const modalTemplate = (html) => `
-    <div class="revealing-modal__close">X</div>
-    <div class="revealing-modal__content">
-      ${html}
-    </div>
-  `;
 
   const defaults = {
     slideUpAnimation: true,
@@ -20,45 +20,52 @@ const RevealingModal = ((window, document, $) => {
 
   let config = {};
 
-  const errors = {
-    /**
-     * Check if a link is an anchor, if it is returns the link without the #
-     *
-     * @param  {string}  link - the link to check
-     * @return {Boolean/string} returns false if it's not an anchror, the link without the # if instead it is
-     */
-    isAnchor(link) {
-      if (link.charAt(0) !== '#') {
-        throw new Error('The href attribute must be an anchor');
-        return false;
-      }
-
-      return link.slice(1);
-    },
-  };
-
   function init(options = {}) {
     config = { ...defaults, ...options };
 
     modals = [...document.querySelectorAll('.revealing-modal')];
     modals = _buildModal(modals);
+
     triggers = [...document.querySelectorAll('[data-toggle="revealing-modal"]')];
-    _addEventListeners(triggers);
+    _addTriggersEventListeners(triggers);
+
+    let closeButtons = [...document.querySelectorAll('.revealing-modal__close')];
+    _addCloseEventListeners(closeButtons);
   }
 
-  function openModal(e) {
-    let targetId = '';
-    if (e.currentTarget.hasAttribute('data-target')) {
-      targetId = e.currentTarget.getAttribute('data-target');
-    } else {
-      targetId = _errors.isAnchor(e.currentTarget.getAttribute('href'))
-      if(!targetId)
-        return;
+
+  /**
+   * Gets the modal element starting from the trigger element
+   *
+   * @return {node} returns the modal node
+   */
+  function _getTargetModal(trigger) {
+    const targetId = trigger.hasAttribute('data-target') ? trigger.getAttribute('data-target') : trigger.getAttribute('href');
+
+    if (targetId.charAt(0) !== '#') {
+      ERRORS.isNotId();
+      return false;
     }
 
-    document.getElementById(targetId).classList.add('open');
+    const target = document.getElementById(targetId.slice(1));
+
+    if (!target) {
+      ERRORS.modalNotFound();
+      return false;
+    }
+
+    return target;
   }
-  function closeModal() {}
+
+  function openModal(modal) {
+    modal.classList.add('open');
+
+    // trigger events
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('open');
+  }
 
   /**
    * Build the modal and append it to the dom
@@ -78,9 +85,30 @@ const RevealingModal = ((window, document, $) => {
    *
    * @param {array} triggers - the triggers list
    */
-  function _addEventListeners(triggers) {
+  function _addTriggersEventListeners(triggers) {
     triggers.forEach((el, i) => {
-      el.addEventListener('click', openModal);
+      el.addEventListener('click', (e) => {
+        const modal = _getTargetModal(e.currentTarget)
+
+        if (modal) {
+          openModal(modal);
+        }
+      });
+    });
+  }
+
+  /**
+   * Attach the event listeners to the close buttons
+   *
+   * @param {array} close buttons - the array of buttons
+   */
+  function _addCloseEventListeners(buttons) {
+    buttons.forEach((el, i) => {
+      el.addEventListener('click', (e) => {
+        const modal = el.parentNode
+
+        closeModal(modal);
+      });
     });
   }
 

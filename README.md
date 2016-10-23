@@ -21,10 +21,10 @@ Put the content of the modal in an element with the class `revealing-modal` and 
 
 Or you can use it with jquery
 ```js
-var myCustomModal = $('#my-cusom-modal').revealingModal({ ..options.. });
-myCustomModal.open();
-myCustomModal.close();
-myCustomModal.destroy();
+const myCustomModal = $('#my-cusom-modal').revealingModal({ ...options });
+myCustomModal.revealingModal('open');
+myCustomModal.revealingModal('close');
+myCustomModal.revealingModal('destroy');
 ```
 
 ## Options

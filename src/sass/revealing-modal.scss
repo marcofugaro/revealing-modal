@@ -30,4 +30,11 @@
       left: 0;
     }
   }
+
+  &__close {
+    display: block;
+    background: red;
+    width: 50px;
+    height: 50px  ;
+  }
 }

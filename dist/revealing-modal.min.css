@@ -4,4 +4,4 @@
  * Copyright © 2016 Marco Fugaro <marco.fugaro@gmail.com> (http://marcofugaro.it/)
  * License: MIT
  */
-.revealing-modal{position:fixed;top:50%;left:50%;bottom:0;right:0;overflow:hidden;width:0;height:0;pointer-events:none}.revealing-modal,.revealing-modal__content{-webkit-transition:all .8s ease;transition:all .8s ease}.revealing-modal__content{position:absolute;background-color:rgba(255,0,0,.2);width:100vw;top:-50vh;left:-50vw}.revealing-modal.open{pointer-events:auto;top:0;left:0;width:100vw;height:100vh}.revealing-modal.open .revealing-modal__content{top:0;left:0}
+.revealing-modal{position:fixed;top:50%;left:50%;bottom:0;right:0;overflow:hidden;width:0;height:0;pointer-events:none}.revealing-modal,.revealing-modal__content{-webkit-transition:all .8s ease;transition:all .8s ease}.revealing-modal__content{position:absolute;background-color:rgba(255,0,0,.2);width:100vw;top:-50vh;left:-50vw}.revealing-modal.open{pointer-events:auto;top:0;left:0;width:100vw;height:100vh}.revealing-modal.open .revealing-modal__content{top:0;left:0}.revealing-modal__close{display:block;background:red;width:50px;height:50px}
